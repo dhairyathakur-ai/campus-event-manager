@@ -1,0 +1,17 @@
+# Python
+.venv/
+.venv-1/
+venv/
+__pycache__/
+*.pyc
+campus_events.db
+campus_events_old.db
+.env
+
+# Node
+node_modules/
+dist/
+
+# OS
+.DS_Store
+Thumbs.db

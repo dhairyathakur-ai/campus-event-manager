@@ -1,24 +1,24 @@
 function EventCard({ event, onRegister }) {
-  const formattedDate = new Date(event.date).toLocaleString();
+  const formattedDate = new Date(event.date).toLocaleString(undefined, {
+    dateStyle: "medium",
+    timeStyle: "short",
+  });
 
   return (
-    <div style={styles.card}>
-      <h3>{event.title}</h3>
-      <p>{event.description}</p>
-      <p><strong>Date:</strong> {formattedDate}</p>
-      <p><strong>Location:</strong> {event.location}</p>
-      <button onClick={() => onRegister(event.id)}>Register</button>
+    <div className="event-card">
+      <div className="event-card-body">
+        <h3>{event.title}</h3>
+        {event.description && <p className="event-card-desc">{event.description}</p>}
+        <div className="event-meta">
+          <span>📅 {formattedDate}</span>
+          {event.location && <span>📍 {event.location}</span>}
+        </div>
+      </div>
+      <button className="btn-accent" onClick={() => onRegister(event.id)}>
+        Register
+      </button>
     </div>
   );
 }
-
-const styles = {
-  card: {
-    border: "1px solid #ddd",
-    borderRadius: "8px",
-    padding: "16px",
-    marginBottom: "12px",
-  },
-};
 
 export default EventCard;

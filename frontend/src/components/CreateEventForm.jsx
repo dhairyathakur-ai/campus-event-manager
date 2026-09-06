@@ -33,41 +33,51 @@ function CreateEventForm({ organizerId, onEventCreated }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ marginBottom: "24px" }}>
-      <h3>Create New Event</h3>
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      <input
-        name="title"
-        placeholder="Event title"
-        value={form.title}
-        onChange={handleChange}
-        required
-      />
-      <br />
-      <textarea
-        name="description"
-        placeholder="Description"
-        value={form.description}
-        onChange={handleChange}
-      />
-      <br />
-      <input
-        type="datetime-local"
-        name="date"
-        value={form.date}
-        onChange={handleChange}
-        required
-      />
-      <br />
-      <input
-        name="location"
-        placeholder="Location"
-        value={form.location}
-        onChange={handleChange}
-      />
-      <br />
-      <button type="submit">Create Event</button>
-    </form>
+    <div className="panel">
+      <h3>Post a new event</h3>
+      {error && <p className="msg-error">{error}</p>}
+      <form onSubmit={handleSubmit}>
+        <div className="field">
+          <label>Title</label>
+          <input
+            name="title"
+            placeholder="e.g. Tech Fest 2026"
+            value={form.title}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="field">
+          <label>Description</label>
+          <textarea
+            name="description"
+            placeholder="What's this event about?"
+            value={form.description}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="field">
+          <label>Date & time</label>
+          <input
+            type="datetime-local"
+            name="date"
+            value={form.date}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="field">
+          <label>Location</label>
+          <input
+            name="location"
+            placeholder="e.g. Main Auditorium"
+            value={form.location}
+            onChange={handleChange}
+          />
+        </div>
+        <button className="btn-primary" type="submit">Post event</button>
+      </form>
+    </div>
   );
 }
 

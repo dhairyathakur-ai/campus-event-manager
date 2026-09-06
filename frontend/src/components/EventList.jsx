@@ -37,11 +37,14 @@ function EventList({ userId }) {
   };
 
   return (
-    <div>
-      <h2>Upcoming Events</h2>
-      {message && <p style={{ color: "green" }}>{message}</p>}
+    <div className="panel">
+      <div className="event-list-header">
+        <h2>Upcoming events</h2>
+        <span className="event-count">{events.length} listed</span>
+      </div>
+      {message && <p className="msg-success">{message}</p>}
       {events.length === 0 ? (
-        <p>No events yet.</p>
+        <div className="empty-state">No events yet. Check back soon.</div>
       ) : (
         events.map((event) => (
           <EventCard key={event.id} event={event} onRegister={handleRegister} />

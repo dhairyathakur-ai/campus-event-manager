@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axiosInstance from "../api/axiosInstance";
 
-function Login({ onLogin }) {
+function Login({ onLogin, onSwitchToSignup }) {
   const [form, setForm] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
 
@@ -18,28 +18,40 @@ function Login({ onLogin }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h3>Login</h3>
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      <input
-        name="email"
-        placeholder="Email"
-        value={form.email}
-        onChange={handleChange}
-        required
-      />
-      <br />
-      <input
-        type="password"
-        name="password"
-        placeholder="Password"
-        value={form.password}
-        onChange={handleChange}
-        required
-      />
-      <br />
-      <button type="submit">Log In</button>
-    </form>
+    <div className="panel">
+      <h3>Log in</h3>
+      {error && <p className="msg-error">{error}</p>}
+      <form onSubmit={handleSubmit}>
+        <div className="field">
+          <label>Email</label>
+          <input
+            name="email"
+            placeholder="you@college.edu"
+            value={form.email}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="field">
+          <label>Password</label>
+          <input
+            type="password"
+            name="password"
+            placeholder="••••••••"
+            value={form.password}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <button className="btn-primary" type="submit">Log in</button>
+      </form>
+      <p className="switch-link">
+        New here?{" "}
+        <button className="link-button" onClick={onSwitchToSignup}>
+          Create an account
+        </button>
+      </p>
+    </div>
   );
 }
 
