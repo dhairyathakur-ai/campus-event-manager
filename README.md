@@ -16,14 +16,14 @@ A full-stack web app for managing and registering for campus events. Built with 
 
 ### Backend
 \`\`\`
-cd backend
-pip install -r requirements.txt
+cd backend/
+pip install -r requirements.txt/
 python -m uvicorn app.main:app --reload
 \`\`\`
 
 ### Frontend
 \`\`\`
-cd frontend
-npm install
+cd frontend/
+npm install/
 npm run dev
 \`\`\`
